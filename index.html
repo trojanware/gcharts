@@ -1,0 +1,98 @@
+<html>
+    <head>
+	<title>Charts</title>
+	<style type="text/css">
+	    * {
+		-webkit-print-color-adjust: exact;
+	    }
+	    body {
+		background: black;
+	    }
+	    span {
+		color: white;
+	    }
+	    .chart1 {
+		width: 50%;
+		display: inline-block;
+	    }
+	    .inp-container {
+		width: 44%;
+		display: inline-block;
+		vertical-align: top;
+		margin: 4px;
+	    }
+	    .chart2 {
+		/*width: 50%;*/
+	    }
+	    .chart3 {
+		width: 20%;
+	    }
+	    .slider {
+		width: 100%;
+		height: 20px;
+		position: relative;
+	    }
+	    .slider .component {
+		height: 10px;
+		margin-top: 5px;
+		float: left;
+	    }
+	    .slider .red {
+		background: #fe425f;
+	    }
+	    .slider .yellow{
+		background: #feb556;
+	    }
+	    .slider .green{
+		background: green;
+	    }
+	    .slider .marker {
+		position: absolute;
+		background: gray;
+		box-shadow: 1px 1px 0px 1px black;
+	    }
+	    .sliderContainer {
+		display: inline-block;
+		width: 50%;
+		margin: 10px;
+	    }
+	</style>
+    </head>
+    <body ng-app="Dashboard">
+	<div class="container">
+	    <div class="chart1" ng-controller="CtrlChart1">
+		<div google-chart class="chart1" chart-type="PieChart" chart-data="chartData"></div>
+		<div class="inp-container">
+		    <span>Escalated</span> <input ng-model="chartData.rows[0].c[1].v" type="number"><br />
+		    <span>Resolved</span><input ng-model="chartData.rows[1].c[1].v" type="number"><br />
+		    <span>Irrelevent</span><input ng-model="chartData.rows[2].c[1].v" type="number"><br />
+		    <span>Unresolved</span><input ng-model="chartData.rows[3].c[1].v" type="number"><br />
+		    <span>Flushed</span><input ng-model="chartData.rows[4].c[1].v" type="number"><br />
+		</div>
+	    </div>
+	</div>
+
+	    <div class="chart2" ng-controller="CtrlChart2">
+		<div google-chart chart-type="AreaChart" chart-data="chartData"></div>
+	    </div>
+
+	    <div class="chart3" ng-controller="CtrlChart3">
+		<div google-chart chart-type="AreaChart" chart-data="chartData"></div>
+	    </div>
+
+	<div class="container" ng-controller="CtrlSlider">
+	    <slider class="sliderContainer" red="43.33" yellow="23.33" green="33.33" value="value"></slider>
+	    <div class="inp-container">
+		<input type="number" ng-model="value" />
+	    </div>
+	</div>
+
+	<script src="jquery.min.js"></script>
+	<script src="angular.min.js"></script>
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript">
+	    google.load('visualization', "1", {packages: ["corechart"]});
+	</script>
+	<script src="app.js"></script>
+    </body>
+</html>
