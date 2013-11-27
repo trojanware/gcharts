@@ -14,10 +14,9 @@ angular.module('Dashboard', []).controller('CtrlChart1', function($scope) {
     };
     $scope.chartData = data;
     var options = {
-	title: 'Doughnut Chart',
 	pieHole: 0.3,
-	backgroundColor: 'black',
-	pieSliceBorderColor: 'black',
+	backgroundColor: '#20242a',
+	pieSliceBorderColor: '#20242a',
 	legend: {
 	    textStyle: {
 		color: 'white'
@@ -38,7 +37,6 @@ angular.module('Dashboard', []).controller('CtrlChart1', function($scope) {
 	]);
 	$scope.chartData = data;
 	$scope.chartOptions = {
-	    title: 'Incoming Posts',
 	    colors: ['#28bef8'],
 	    slices: [
 		{color: 'crimson'},
@@ -50,17 +48,19 @@ angular.module('Dashboard', []).controller('CtrlChart1', function($scope) {
 	    legend: {
 		position: 'none'
 	    },
+	    title: 'Incoming Posts',
 	    areaOpacity: 1.0,
-	    backgroundColor: 'black',
+	    backgroundColor: '#20242a',
 	    chartArea: {
-		width: 700
+		width: 600,
+		left: 55
 	    },
 	    vAxis: {
 		textStyle: {
 		    color: 'white'
 		},
 		gridlines: {
-		    color: 'black'
+		    color: '#20242a'
 		}
 	    },
 	    hAxis: {
@@ -83,12 +83,12 @@ angular.module('Dashboard', []).controller('CtrlChart1', function($scope) {
 	$scope.chartData = data;
 	$scope.chartOptions = {
 	    is3D: true,
-	    backgroundColor: 'black',
+	    backgroundColor: '#20242a',
 	    chartArea: {
-		height: 200,
-		width: 200,
+		height: 100,
+		width: 100,
+		top: 0
 	    },
-	    title: 'CHSI',
 	    colors: ['#28bef8'],
 	    legend: {
 		position: 'none'
@@ -97,17 +97,14 @@ angular.module('Dashboard', []).controller('CtrlChart1', function($scope) {
 	    vAxis: {
 		textPosition: 'none',
 		gridlines: {
-		    color: 'black'
+		    color: '#20242a'
 		}
 	    },
 	    hAxis: {
 		textPosition: 'none',
 		gridlines: {
-		    color: 'black'
+		    color: '#20242a'
 		}
-	    },
-	    chartArea: {
-		width: 200
 	    }
 	};
     }).controller('CtrlSlider', function($scope) {
@@ -137,13 +134,13 @@ angular.module('Dashboard', []).controller('CtrlChart1', function($scope) {
 	    var marker = getSliderComponent(20, 5, markerPos, 0, 'rgb(144, 144, 144)');
 
 	    var svgRoot = document.createElementNS('http://www.w3.org/2000/svg','svg');
-	    svgRoot.setAttribute('height', $element.height() + 30);
+	    svgRoot.setAttribute('height', $element.height());
 	    svgRoot.appendChild(redRect);
 	    svgRoot.appendChild(yellowRect);
 	    svgRoot.appendChild(greenRect);
 	    svgRoot.appendChild(marker);
 	    $element.empty();
-	    $element.append(svgRoot);
+	    $element.prepend(svgRoot);
 	}
 
 	return {

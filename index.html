@@ -6,7 +6,8 @@
 		-webkit-print-color-adjust: exact;
 	    }
 	    body {
-		background: black;
+		background: #20242a;
+		color: white;
 	    }
 	    span {
 		color: white;
@@ -26,6 +27,7 @@
 	    }
 	    .chart3 {
 		width: 20%;
+		display: inline-block;
 	    }
 	    .slider {
 		width: 100%;
@@ -53,15 +55,51 @@
 	    }
 	    .sliderContainer {
 		display: inline-block;
-		width: 50%;
+		width: 40%;
 		margin: 10px;
+		height: 30px;
 	    }
 	</style>
     </head>
     <body ng-app="Dashboard">
 	<div class="container">
-	    <div class="chart1" ng-controller="CtrlChart1">
-		<div google-chart class="chart1" chart-type="PieChart" chart-data="chartData"></div>
+	    <div class="chart3" ng-controller="CtrlChart3">
+		<div style="font-size: 13px;text-align: center">CHSI</div>
+		<div google-chart chart-type="AreaChart" chart-data="chartData"></div>
+	    </div>
+	    <div class="chart3" ng-controller="CtrlChart3">
+		<div style="font-size: 13px;text-align: center">Phone</div>
+		<div google-chart chart-type="AreaChart" chart-data="chartData"></div>
+	    </div>
+	    <div class="chart3" ng-controller="CtrlChart3">
+		<div style="font-size: 13px;text-align: center">Video</div>
+		<div google-chart chart-type="AreaChart" chart-data="chartData"></div>
+	    </div>
+	    <div class="chart3" ng-controller="CtrlChart3">
+		<div style="font-size: 13px;text-align: center">Xfinity</div>
+		<div google-chart chart-type="AreaChart" chart-data="chartData"></div>
+	    </div>
+	    <div></div>
+
+	    <div class="chart2" ng-controller="CtrlChart2">
+		<div google-chart chart-type="AreaChart" chart-data="chartData"></div>
+	    </div>
+
+	<div class="container" style="display: inline-block;width: 24%" ng-controller="CtrlSlider">
+	    <slider class="sliderContainer" red="43.33" yellow="23.33" green="33.33" value="value"></slider>
+	    <div class="inp-container">
+		<input type="number" ng-model="value" />
+	    </div>
+	</div>
+	<div class="container" style="display: inline-block;width: 24%" ng-controller="CtrlSlider">
+	    <slider class="sliderContainer" red="43.33" yellow="23.33" green="33.33" value="value"></slider>
+	    <div class="inp-container">
+		<input type="number" ng-model="value" />
+	    </div>
+	</div>
+
+	    <div class="chart1" style="text-align: center;" ng-controller="CtrlChart1">
+		<div google-chart  chart-type="PieChart" chart-data="chartData"></div>
 		<div class="inp-container">
 		    <span>Escalated</span> <input ng-model="chartData.rows[0].c[1].v" type="number"><br />
 		    <span>Resolved</span><input ng-model="chartData.rows[1].c[1].v" type="number"><br />
@@ -72,20 +110,8 @@
 	    </div>
 	</div>
 
-	    <div class="chart2" ng-controller="CtrlChart2">
-		<div google-chart chart-type="AreaChart" chart-data="chartData"></div>
-	    </div>
 
-	    <div class="chart3" ng-controller="CtrlChart3">
-		<div google-chart chart-type="AreaChart" chart-data="chartData"></div>
-	    </div>
 
-	<div class="container" ng-controller="CtrlSlider">
-	    <slider class="sliderContainer" red="43.33" yellow="23.33" green="33.33" value="value"></slider>
-	    <div class="inp-container">
-		<input type="number" ng-model="value" />
-	    </div>
-	</div>
 
 	<script src="jquery.min.js"></script>
 	<script src="angular.min.js"></script>
